@@ -60,8 +60,13 @@ function prepareDownload(string, pattern) {
 	img.src = pattern.toDataUri();
 }
 
+function randColor() {
+	var colors = ['#ffbc42', '#028090', '#20BF55', '#C5283D', '#930E67']
+	return colors[Math.floor(Math.random() * colors.length)]
+}
+
 var changeEvent = onChange($('#string'), function (val) {
-	var pattern = GeoPattern.generate(val);
+	var pattern = GeoPattern.generate(val, {color: randColor()});
 
 	var bg = next();
 	$('#bg-' + bg.next)
